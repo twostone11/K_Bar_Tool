@@ -1,26 +1,26 @@
-:root { color-scheme: dark; }
+:root { color-scheme: light; }
 * { box-sizing: border-box; }
 html, body { height: 100%; margin: 0; }
 body {
   display: flex; flex-direction: column;
-  background: #12151c; color: #c8cdd8;
+  background: #ffffff; color: #1f2430;
   font: 14px/1.4 system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 .toolbar {
   display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
-  padding: 8px 12px; background: #1a1e28; border-bottom: 1px solid #2a2f3c;
+  padding: 8px 12px; background: #f4f6fa; border-bottom: 1px solid #dde1ea;
 }
 .toolbar label { display: flex; align-items: center; gap: 6px; }
 .toolbar input, .toolbar select, .toolbar button {
-  background: #232836; color: inherit; border: 1px solid #343b4d;
+  background: #ffffff; color: inherit; border: 1px solid #c5cbd8;
   border-radius: 4px; padding: 4px 8px; font: inherit;
 }
 .toolbar input[type=number] { width: 64px; }
 .toolbar button { cursor: pointer; }
-.toolbar button:hover:not(:disabled) { background: #2d3446; }
+.toolbar button:hover:not(:disabled) { background: #e9edf5; }
 .toolbar button:disabled { opacity: .4; cursor: default; }
-.sep { width: 1px; height: 20px; background: #343b4d; }
-.status { margin-left: auto; font-variant-numeric: tabular-nums; color: #8b93a7; }
+.sep { width: 1px; height: 20px; background: #c5cbd8; }
+.status { margin-left: auto; font-variant-numeric: tabular-nums; color: #6b7385; }
 .stage { flex: 1; min-height: 0; position: relative; }
 #board { position: absolute; inset: 0; width: 100%; height: 100%; touch-action: none; }
-.help { padding: 6px 12px; font-size: 12px; color: #7d8599; background: #1a1e28; border-top: 1px solid #2a2f3c; }
+.help { padding: 6px 12px; font-size: 12px; color: #6b7385; background: #f4f6fa; border-top: 1px solid #dde1ea; }

@@ -10,7 +10,7 @@ const undoBtn = $<HTMLButtonElement>('undo');
 const redoBtn = $<HTMLButtonElement>('redo');
 const status = $('status');
 
-const clampCount = (v: number) => (Number.isFinite(v) ? Math.min(60, Math.max(5, Math.round(v))) : 20);
+const clampCount = (v: number) => (Number.isFinite(v) ? Math.min(150, Math.max(5, Math.round(v))) : 20);
 
 const savedCount = clampCount(Number(localStorage.getItem('kbar.count') ?? 20));
 const savedTheme: Theme = localStorage.getItem('kbar.theme') === 'red-up' ? 'red-up' : 'green-up';

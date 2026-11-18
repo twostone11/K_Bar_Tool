@@ -7,10 +7,10 @@ export interface Overlay {
 }
 
 const PALETTE: Record<Theme, { up: string; down: string }> = {
-  'green-up': { up: '#26a69a', down: '#ef5350' },
-  'red-up': { up: '#ef5350', down: '#26a69a' },
+  'green-up': { up: '#089981', down: '#e0393e' },
+  'red-up': { up: '#e0393e', down: '#089981' },
 };
-const FLAT = '#9aa3b5';
+const FLAT = '#8a93a6';
 
 export function handlePositions(l: Layout, slot: number, c: Candle): Record<Handle, { x: number; y: number }> {
   const cx = slotCenterX(l, slot);
@@ -29,28 +29,28 @@ function drawGrid(ctx: CanvasRenderingContext2D, l: Layout) {
   ctx.textAlign = 'right';
   for (let p = PRICE_MIN; p <= PRICE_MAX; p += 10) {
     const y = Math.round(priceToY(l, p)) + 0.5;
-    ctx.strokeStyle = p % 50 === 0 ? '#2f3646' : '#222836';
+    ctx.strokeStyle = p % 50 === 0 ? '#c9cfdb' : '#e6e9f0';
     ctx.lineWidth = 1;
     ctx.beginPath();
     ctx.moveTo(l.left, y);
     ctx.lineTo(l.right, y);
     ctx.stroke();
-    ctx.fillStyle = '#6f778b';
+    ctx.fillStyle = '#6b7385';
     ctx.fillText(String(p), l.left - 6, y);
   }
   const sw = slotWidth(l);
   ctx.textAlign = 'center';
   ctx.textBaseline = 'top';
-  const labelEvery = sw >= 24 ? 1 : 5;
+  const labelEvery = sw >= 24 ? 1 : sw >= 12 ? 5 : 10;
   for (let i = 0; i <= l.slotCount; i++) {
     const x = Math.round(l.left + sw * i) + 0.5;
-    ctx.strokeStyle = '#1d222e';
+    ctx.strokeStyle = '#eef0f5';
     ctx.beginPath();
     ctx.moveTo(x, l.top);
     ctx.lineTo(x, l.bottom);
     ctx.stroke();
     if (i < l.slotCount && (i + 1) % labelEvery === 0) {
-      ctx.fillStyle = '#6f778b';
+      ctx.fillStyle = '#6b7385';
       ctx.fillText(String(i + 1), slotCenterX(l, i), l.bottom + 8);
     }
   }
@@ -86,12 +86,12 @@ export function render(
   overlay: Overlay | null,
 ): void {
   ctx.clearRect(0, 0, width, height);
-  ctx.fillStyle = '#12151c';
+  ctx.fillStyle = '#ffffff';
   ctx.fillRect(0, 0, width, height);
   drawGrid(ctx, l);
 
   if (overlay && overlay.hoverSlot >= 0) {
-    ctx.fillStyle = 'rgba(255,255,255,0.04)';
+    ctx.fillStyle = 'rgba(0,0,0,0.04)';
     ctx.fillRect(l.left + slotWidth(l) * overlay.hoverSlot, l.top, slotWidth(l), l.bottom - l.top);
   }
 
@@ -104,10 +104,10 @@ export function render(
       for (const h of ['high', 'low', 'open', 'close'] as Handle[]) {
         ctx.beginPath();
         ctx.arc(pos[h].x, pos[h].y, h === overlay.activeHandle ? 6 : 4, 0, Math.PI * 2);
-        ctx.fillStyle = h === overlay.activeHandle ? '#ffd54f' : '#12151c';
+        ctx.fillStyle = h === overlay.activeHandle ? '#ff9800' : '#ffffff';
         ctx.fill();
         ctx.lineWidth = 1.5;
-        ctx.strokeStyle = '#ffd54f';
+        ctx.strokeStyle = '#ff9800';
         ctx.stroke();
       }
     }
