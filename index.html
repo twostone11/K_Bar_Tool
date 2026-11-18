@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>K线白板</title>
+  </head>
+  <body>
+    <header class="toolbar">
+      <label>K线根数
+        <input id="count" type="number" min="5" max="60" step="1" value="20" />
+      </label>
+      <label>配色
+        <select id="theme">
+          <option value="green-up">绿涨红跌（美股）</option>
+          <option value="red-up">红涨绿跌（A股）</option>
+        </select>
+      </label>
+      <span class="sep"></span>
+      <button id="undo" title="撤销 (Ctrl+Z)">撤销</button>
+      <button id="redo" title="重做 (Ctrl+Shift+Z / Ctrl+Y)">重做</button>
+      <button id="clear">清空</button>
+      <button id="export">导出 PNG</button>
+      <span id="status" class="status"></span>
+    </header>
+    <main class="stage">
+      <canvas id="board"></canvas>
+    </main>
+    <footer class="help">
+      在某一列按下并上下拖动，画出实体（起点为开盘价，终点为收盘价）。
+      拖动圆点可调整最高价、最低价、开盘价、收盘价。
+      右键或 Delete 删除该列；在已有K线上单击不会改动它。
+    </footer>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
